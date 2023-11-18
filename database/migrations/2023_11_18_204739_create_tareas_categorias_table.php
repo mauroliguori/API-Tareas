@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comentarios', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('id_de_usuario');
+        Schema::create('tareas_categorias', function (Blueprint $table) {
+            $table->unsignedBigInteger('categoria_id');
             $table->unsignedBigInteger('tarea_id');
-            $table->text('descripcion');
-            $table->timestamps();
-            $table->softDeletes();
+            $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->foreign('tarea_id')->references('id')->on('tareas');
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comentarios');
+        Schema::dropIfExists('tareas_categorias');
     }
 };

@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('tareas', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo');
+            $table->unsignedBigInteger('id_de_autor');
+            $table->unsignedBigInteger('id_de_usuario_seleccionado')->nullable();
+            $table->text('descripcion');
+            $table->timestamp('fecha_limite')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
