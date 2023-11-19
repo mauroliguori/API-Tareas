@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TareaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::get('/saludo', function () {
-    return response()->json(['mensaje' => 'Hola']);
+Route::prefix('v1')->group(function () {
+    Route::get("/tarea",[TareaController::class,'List']);
+    Route::get("/tarea/{d}",[TareaController::class,'Find']);
+    Route::post("/tarea",[TareaController::class,'Create']);
+    Route::delete("/tarea/{d}",[TareaController::class,'Delete']);
+    Route::put("/tarea/{d}",[TareaController::class,'Update']);
 });
