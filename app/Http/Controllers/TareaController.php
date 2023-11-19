@@ -24,10 +24,11 @@ class TareaController extends Controller
 
     public function Update(Request $request, $idTarea){
         $tarea = Tarea::FindOrFail($idTarea);
-        $tarea -> nombre = $request -> post("nombre");
-        $tarea -> tipo = $request -> post("tipo");
-        $tarea -> precio = $request -> post("precio");
-        $tarea -> gramos = $request -> post("gramos");
+        $tarea -> titulo = $request -> post("titulo");
+        $tarea -> id_de_autor = $request -> post("id_de_autor");
+        $tarea -> pd_de_usuario_seleccionado = $request -> post("d_de_usuario_seleccionado");
+        $tarea -> descripcion = $request -> post("descripcion");
+        $tarea -> fecha_limite = $request -> post("fecha_limite");
         $tarea -> save();
 
         return $tarea;
@@ -35,11 +36,11 @@ class TareaController extends Controller
 
     public function Create(Request $request){
         $tarea = new tarea();
-        $tarea -> nombre = $request -> post("nombre");
-        $tarea -> tipo = $request -> post("tipo");
-        $tarea -> precio = $request -> post("precio");
-        $tarea -> gramos = $request -> post("gramos");
-
+        $tarea -> titulo = $request -> post("titulo");
+        $tarea -> id_de_autor = $request -> post("id_de_autor");
+        $tarea -> pd_de_usuario_seleccionado = $request -> post("d_de_usuario_seleccionado");
+        $tarea -> descripcion = $request -> post("descripcion");
+        $tarea -> fecha_limite = $request -> post("fecha_limite");
         $tarea -> save();
 
         return $tarea;
