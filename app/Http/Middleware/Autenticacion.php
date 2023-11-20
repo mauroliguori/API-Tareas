@@ -11,13 +11,15 @@ class Autenticacion
     public function handle(Request $request, Closure $next)
     {
 
+        
+
         $tokenHeader = [
             "Authorization" => $request -> header("Authorization"),
             "Accept" => "application/json",
             "Content-Type" => "application/json"
         ];
 
-        $response = Http::withHeaders($tokenHeader) -> get ( "http://localhost:8000/api/v1/validate");
+        $response = Http::withHeaders($tokenHeader) -> get ( "api-oauth.tareas-namespace.svc.cluster.local/api/v1/validate");
         if($response -> successful()){
             return $next($request);
         }

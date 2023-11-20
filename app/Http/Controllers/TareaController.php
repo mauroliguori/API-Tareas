@@ -38,7 +38,7 @@ class TareaController extends Controller
         $tarea = new tarea();
         $tarea -> titulo = $request -> post("titulo");
         $tarea -> id_de_autor = $request -> post("id_de_autor");
-        $tarea -> id_de_usuario_seleccionado = $request -> post("d_de_usuario_seleccionado");
+        $tarea -> id_de_usuario_seleccionado = $request -> post("id_de_usuario_seleccionado");
         $tarea -> descripcion = $request -> post("descripcion");
         $tarea -> fecha_limite = $request -> post("fecha_limite");
         $tarea -> save();
