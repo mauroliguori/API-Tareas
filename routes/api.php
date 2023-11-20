@@ -3,22 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TareaController;
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
+use App\Http\Middleware\Autenticacion;  
 
 Route::prefix('v1')->group(function () {
-    Route::get("/tarea",[TareaController::class,'List']);
-    Route::get("/tarea/{d}",[TareaController::class,'Find']);
-    Route::post("/tarea",[TareaController::class,'Create']);
-    Route::delete("/tarea/{d}",[TareaController::class,'Delete']);
-    Route::put("/tarea/{d}",[TareaController::class,'Update']);
+    Route::get("/tareas",[TareaController::class,'List']);
+    Route::get("/tareas/{d}",[TareaController::class,'Find']);
+    Route::post("/tareas",[TareaController::class,'Create'])->middleware(Autenticacion::class);
+    Route::delete("/tareas/{d}",[TareaController::class,'Delete'])->middleware(Autenticacion::class);
+    Route::put("/tareas/{d}",[TareaController::class,'Update'])->middleware(Autenticacion::class);
 });
