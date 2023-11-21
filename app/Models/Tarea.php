@@ -20,7 +20,7 @@ class Tarea extends Model
         return $this->belongsToMany(Categoria::class, 'tareas_categorias', 'tarea_id', 'categoria_id');
     }
 
-    public function comments(): HasMany
+    public function comentarios(): HasMany
     {
         return $this->hasMany(Comentario::class);
     }
