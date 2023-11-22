@@ -20,7 +20,10 @@ Route::prefix('v1')->group(function () {
 
     Route::post("/tareas/{idtareas}/categorias/{idcategorias}",[CategoriaController::class,'AgregarCategoriaParaUnaTarea'])->middleware(Autenticacion::class);
     Route::delete("/tareas/{idtareas}/categorias/{idcategorias}",[CategoriaController::class,'BorrarCategoriaParaUnaTarea'])->middleware(Autenticacion::class);
-    
-    Route::get("/tareas/{idtareas}/comentarios",[ComentarioController::class,'ListarComentarioTarea']);//->middleware(Autenticacion::class);
+    Route::get("/tareas/{idtareas}/categorias",[CategoriaController::class,'ListarCategoriasParaUnaTarea'])->middleware(Autenticacion::class);
+
+
+
+    Route::get("/tareas/{idtareas}/comentarios",[ComentarioController::class,'ListarComentarioTarea'])->middleware(Autenticacion::class);
 
 });

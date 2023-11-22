@@ -35,6 +35,7 @@ class CategoriaController extends Controller
         $tarea = Tarea::FindOrFail($idTarea);
         $tarea->categorias()->attach($categoria->id);
 
+
         if($tarea->categorias->contains($categoria->id))
             return ["mensaje"=>"Esta tarea ya contiene esta categoría"];
         $tarea->categorias()->attach($categoria->id);
@@ -50,5 +51,12 @@ class CategoriaController extends Controller
         return ["mensaje"=>"Categoría fuera de la tarea"];
 
     }
+
+    public function ListarCategoriasParaUnaTarea(Request $request, $idTarea){
+        $tarea = Tarea::FindOrFail($idTarea);
+        $categorias = $tarea->categorias;
+        return $categorias;
+    }
+    
 
 }
