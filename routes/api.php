@@ -24,6 +24,12 @@ Route::prefix('v1')->group(function () {
 
 
 
-    Route::get("/tareas/{idtareas}/comentarios",[ComentarioController::class,'ListarComentarioTarea'])->middleware(Autenticacion::class);
+    Route::get("/tareas/{idtareas}/comentarios",[ComentarioController::class,'ListarComentarioDeUnaTarea'])->middleware(Autenticacion::class);
+    Route::post("/tareas/{idtareas}/comentarios",[ComentarioController::class,'CrearComentarioDeUnaTarea'])->middleware(Autenticacion::class);
+    Route::put("/comentarios/{d}",[ComentarioController::class,'ActualizarComentarioDeUnaTarea'])->middleware(Autenticacion::class);
+    Route::delete("/comentarios/{d}",[ComentarioController::class,'BorrarComentarioDeUnaTarea'])->middleware(Autenticacion::class);
+
+
+
 
 });
