@@ -38,9 +38,17 @@ class CategoriaController extends Controller
         if($tarea->categorias->contains($categoria->id))
             return ["mensaje"=>"Esta tarea ya contiene esta categoría"];
         $tarea->categorias()->attach($categoria->id);
-        return ["mensaje"=>"ANDA FLAMAAA"];
+        return ["mensaje"=>"ANDA FLAMAAA, se agregó la categoría a la tarea"];
 
     }
 
+    public function BorrarCategoriaParaUnaTarea(Request $request, $idTarea, $idCategoria){
+        $categoria = Categoria::FindOrFail($idCategoria);
+        $tarea = Tarea::FindOrFail($idTarea);
+        $tarea->categorias()->detach($categoria->id);
+
+        return ["mensaje"=>"Categoría fuera de la tarea"];
+
+    }
 
 }
