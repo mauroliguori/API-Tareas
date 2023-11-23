@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tarea;
 
+
 class TareaController extends Controller
 {
     public function List(Request $request){
@@ -45,4 +46,8 @@ class TareaController extends Controller
 
         return $tarea;
     }
+
+
+
+   
 }
